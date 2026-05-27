@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">AI 智能问答</text>
+  </view>
+  
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <van-field
+      value="{{question}}"
+      placeholder="请输入你的问题..."
+      border="{{false}}"
+      bind:change="onQuestionChange"
+      custom-style="padding: 20rpx; background: white; border-radius: 16rpx;"
+    />
+    
+    <van-button
+      type="primary"
+      size="large"
+      round
+      bind:tap="askAI"
+      loading="{{loading}}"
+      disabled="{{!question.trim() || loading}}"
+      custom-style="margin-top: 30rpx;"
+    >
+      {{loading ? 'AI 思考中...' : '提问'}}
+    </van-button>
+  </view>
+  
+  <!-- 聊天记录 -->
+  <scroll-view class="chat-list" scroll-y scroll-with-animation enhanced show-scrollbar="{{false}}">
+    <block wx:for="{{chatHistory}}" wx:key="index">
+      <!-- 用户问题 -->
+      <view class="chat-item user">
+        <view class="avatar user-avatar">
+          <text>我</text>
+        </view>
+        <view class="message user-message">
+          <text>{{item.question}}</text>
+        </view>
+      </view>
+      
+      <!-- AI 回答 -->
+      <view class="chat-item ai">
+        <view class="avatar ai-avatar">
+          <text>AI</text>
+        </view>
+        <view class="message ai-message">
+          <text>{{item.answer}}</text>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 加载状态 -->
+    <view wx:if="{{loading}}" class="loading">
+      <van-loading type="spinner" size="48rpx" />
+      <text class="loading-text">AI 正在思考...</text>
+    </view>
+  </scroll-view>
+</view>

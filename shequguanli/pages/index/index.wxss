@@ -1,0 +1,26 @@
+.banner {
+  width: 100%;
+  height: 360rpx; /* 必须给固定高度 */
+}
+.banner swiper {
+  height: 100%;
+}
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+.notice{
+  color: #000 !important;
+  font-size: 28rpx !important;
+}
+.bottom{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20rpx;
+  flex-wrap: wrap;
+}
+
+.bottom>view>image{
+  width: 345rpx;
+  height: 200rpx;
+}
