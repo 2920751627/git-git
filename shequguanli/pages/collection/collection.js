@@ -1,22 +1,11 @@
 import api from '../../config/settings'
+import env from '../../config/env'
 
 Page({
 
   data: {
     dataDict: {
-      result: [{
-          "id": 1,
-          "name": "张铁蛋",
-          "area": "#19",
-          "avatar": "/images/img/b.jpg"
-        },
-        {
-          "id": 2,
-          "name": "刘亦菲",
-          "area": "#19",
-          "avatar": "/images/img/b.jpg"
-        }
-      ],
+      result: env.MOCK_USERS,
       today_count: 66,
     }
   },
